@@ -33,25 +33,9 @@
       -->
 
     <!-- Add packages here -->
-    <!-- 错误页面 -->
-    <package name="BBS" extends="struts-default">
-    	<global-results>
-    		<result name="error">/error.jsp</result>
-    	</global-results>
-    	<global-exception-mappings>
-    		<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
-    	</global-exception-mappings>
-    </package>
-    
     <!-- 前台页面 -->
-    <package name="default" namespace="/" extends="BBS">
+    <package name="index" namespace="/index" extends="struts-default">
         <default-action-ref name="index" />
-        <action name="index" class="com.wanggang.action.BbsArticAction" method="index">
-            <result>/index.jsp</result>
-        </action>
-    </package>
-    
-    <package name="index" namespace="/index" extends="default">
         <action name="index" class="com.wanggang.action.BbsArticAction" method="index">
             <result>/index.jsp</result>
         </action>
@@ -61,7 +45,7 @@
     </package>
     
     <!-- 后台页面 -->
-	<package name="admin" namespace="/admin" extends="default">
+	<package name="admin" namespace="/admin" extends="index">
         <action name="admin" class="com.wanggang.action.BbsArticAction" method="admin">
             <result>/Admin/index.jsp</result>
         </action>
