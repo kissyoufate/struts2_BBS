@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+<!--
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+    </package>
+
+    <include file="example.xml"/>
+      -->
+
+    <!-- Add packages here -->
+    <!-- 前台页面 -->
+    <package name="index" namespace="/index" extends="struts-default">
+        <default-action-ref name="index" />
+        <action name="index" class="com.wanggang.action.BbsArticAction" method="index">
+            <result>/index.jsp</result>
+        </action>
+        <action name="detail" class="com.wanggang.action.BbsArticAction" method="detail">
+        	<result>/detail.jsp</result>
+        </action>
+    </package>
+    
+    <!-- 后台页面 -->
+	<package name="admin" namespace="/admin" extends="index">
+        <action name="admin" class="com.wanggang.action.BbsArticAction" method="admin">
+            <result>/Admin/index.jsp</result>
+        </action>
+        <action name="edit" class="com.wanggang.action.BbsArticAction" method="edit">
+        	<result>/Admin/edit.jsp</result>
+        </action>
+        <action name="delete" class="com.wanggang.action.BbsArticAction" method="delete">
+        	<result>/Admin/index.jsp</result>
+        </action>
+        <action name="add" class="com.wanggang.action.BbsArticAction" method="add">
+        	<result>/Admin/add.jsp</result>
+        </action>
+        <action name="addHandle" class="com.wanggang.action.BbsArticAction" method="addHandle">
+        	<result>/Admin/index.jsp</result>
+        </action>
+        <action name="editHandle" class="com.wanggang.action.BbsArticAction" method="editHandle">
+        	<result>/Admin/index.jsp</result>
+        </action>
+    </package>
+</struts>
